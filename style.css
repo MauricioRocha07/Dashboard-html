@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração geral */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 10px;
+}
+
+/* Cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #004080;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Menu */
+nav.dashboard-menu {
+    margin: 20px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+nav.dashboard-menu button:hover {
+    background-color: #003366;
+}
+
+/* Botão de troca de tema */
+#toggle-theme {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+    background: #004080;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+/* Relógio digital */
+#digital-clock {
+    font-size: 64px;
+    font-weight: bold;
+    color: #004080;
+    background-color: #f9f9f9;
+    padding: 20px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 40px auto;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    display: inline-block;
+    animation: pulsar 2s infinite;
+}
+
+#digital-clock:hover {
+    transform: scale(1.05);
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+}
+
+/* Animação pulsar do relógio */
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+/* Dark mode */
+body.dark {
+    background: #121212;
+    color: #f0f0f0;
+}
+
+body.dark header, body.dark nav.dashboard-menu, body.dark footer {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+body.dark nav.dashboard-menu button:hover {
+    background-color: #333;
+}
+
+body.dark #digital-clock {
+    background-color: #333;
+    color: #00bcd4;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Lista de tarefas */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#task-list li {
+    background-color: #f9f9f9;
+    margin-bottom: 8px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#task-list li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Classe de tarefa concluída */
+#task-list li.completed {
+    background-color: #d1ffd1;
+    text-decoration: line-through;
+    color: #666;
+}
+
+/* Lista de tarefas modo escuro */
+body.dark #task-list li {
+    background-color: #333;
+    color: #eee;
+}
+body.dark #task-list li:hover {
+    background-color: #555;
+}
+
+body.dark #task-list li.completed {
+    background-color: #445;
+    color: #ccc;
+}
+
+/* Nova tarefa input */
+#new-task-input {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Botão de adicionar tareda */
+#add-task-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#add-task-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+body.dark #add-task-btn {
+    background-color: #66bb6a;
+    color: #222;
+}
+
+body.dark #add-task-btn:hover {
+    background-color: #5aa85d;
+}
+
+/* Área de bloco de notas */
+.notepad-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+#notepad-area {
+    width: 100%;
+    height: 300px;
+    padding: 16px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    resize: none;
+    margin-top: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+#notepad-area:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
+
+/* Bloco de notas dark mode */
+body.dark #notepad-area {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Botão salvar notas */
+#save-notes-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#save-notes-btn:hover {
+    background-color: #003366;
+}
+
+body.dark #save-notes-btn {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark #save-notes-btn:hover {
+    background-color: #444;
+}
+
+/* Botôes do dashboard */
+.dashboard-btn {
+    background-color: #004080;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dashboard-btn:hover {
+    background-color: #00264d;
+}
+
+.dashboard-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    #notepad-area {
+        height: 200px;
+    }
+}

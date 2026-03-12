@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pessoal</title>
+    <!-- Importa o arquivo de estilos -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Importa o JavaScript em modulos -->
+    <script type="module" src="main.js"></script>
+</head>
+<body>
+    <!-- Cabeçalho com o título e botão de alterar tema -->
+    <header>
+        <h1>Bem-vindo, Maurício</h1>
+        <button id="toggle-theme" class="dashboard-btn" aria-label="Alterar tema escuro">🌙</button>
+    </header>
+
+    <!-- Menu de navegação -->
+    <nav class="dashboard-menu">
+        <button data-section="clock" class="dashboard-btn">Relógio</button>
+        <button data-section="task" class="dashboard-btn">Tarefas</button>
+        <button data-section="notes" class="dashboard-btn">Notas</button>
+        <button data-section="weather" class="dashboard-btn">Clima</button>
+    </nav>
+
+    <!-- Área principal que troca conforme a seção ativa -->
+    <main>
+        <!-- Relógio -->
+        <section id="clock" class="dashboard-section active">
+            <h2>Relógio</h2>
+            <div class="clock-container">
+                <div id="digital-clock">--:--:--</div>
+        </div>
+        </section>
+
+        <!-- Tarefas -->
+        <section id="task" class="dashboard-section">
+            <h2>Minhas Tarefas</h2>
+            <ul id="task-list"></ul>
+            <input type="text" id="new-task-input" placeholder="Digite uma nova tarefa..." />
+            <button id="add-task-btn" class="dashboard-btn">➕ Adicionar</button>
+        </section>
+
+        <!-- Bloco de notas -->
+        <section id="notes" class="dashboard-section">
+            <h2>Bloco de Notas</h2>
+            <div class="notepad-container">
+                <textarea id="notepad-area" rows="10" placeholder="Escreva suas anotações aqui..."></textarea>
+                <button id="save-notes-btn" class="dashboard-btn"><span>💾</span> Salvar</button>
+            </div>
+        </section>
+
+        <!-- Clima -->
+        <section id="weather" class="dashboard-section">
+            <h2>Clima Atual</h2>
+            <div id="weather-info">Carregando dados...</div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy;2026 - Maurício Rocha</p>
+    </footer>
+</body>
+</html>
