@@ -18,28 +18,39 @@
 
     <!-- Menu de navegação -->
     <nav class="dashboard-menu">
-        <button data-section="clock" class="dashboard-btn">Relógio</button>
-        <button data-section="task" class="dashboard-btn">Tarefas</button>
-        <button data-section="notes" class="dashboard-btn">Notas</button>
-        <button data-section="weather" class="dashboard-btn">Clima</button>
+        <button data-section="home" class="dashboard-btn active-btn">🏠 Início</button>
+        <button data-section="task" class="dashboard-btn">✅ Tarefas</button>
+        <button data-section="notes" class="dashboard-btn">📝 Notas</button>
+        <button data-section="finance" class="dashboard-btn">📈 Financeiro</button>
+        <button data-section="projects" class="dashboard-btn">🎯 Projetos</button>
     </nav>
 
     <!-- Área principal que troca conforme a seção ativa -->
     <main>
-        <!-- Relógio -->
-        <section id="clock" class="dashboard-section active">
-            <h2>Relógio</h2>
-            <div class="clock-container">
-                <div id="digital-clock">--:--:--</div>
+        <!-- Home -->
+        <section id="home" class="dashboard-section active">
+            <h2>Visão Geral</h2>
+            <div class="widgets-container">
+                <div class="widget card">
+                    <h3>Hora Atual</h3>
+                    <div id="digital-clock">--:--:--</div>
+                </div>
+
+                <div class="widget card">
+                    <h3>Clima</h3>
+                    <div id="weather-info">Carregando dados...</div>
+                </div>
         </div>
         </section>
 
         <!-- Tarefas -->
         <section id="task" class="dashboard-section">
             <h2>Minhas Tarefas</h2>
-            <ul id="task-list"></ul>
-            <input type="text" id="new-task-input" placeholder="Digite uma nova tarefa..." />
-            <button id="add-task-btn" class="dashboard-btn">➕ Adicionar</button>
+            <div class="card">
+                <ul id="task-list"></ul>
+                <input type="text" id="new-task-input" placeholder="Digite uma nova tarefa..." />
+                <button id="add-task-btn" class="dashboard-btn">➕ Adicionar</button>
+            </div>
         </section>
 
         <!-- Bloco de notas -->
@@ -51,10 +62,34 @@
             </div>
         </section>
 
-        <!-- Clima -->
-        <section id="weather" class="dashboard-section">
-            <h2>Clima Atual</h2>
-            <div id="weather-info">Carregando dados...</div>
+        <!-- Finanças -->
+        <section id="finance" class="dashboard-section">
+            <h2>Painel Financeiro</h2>
+            <div class="card">
+                <p>Módulo de cotações em construção...</p>
+                <div id="crypto-rates"></div>
+            </div>
+        </section>
+
+        <section id="projects" class="dashboard-section">
+            <h2>Acompanhamento de Projetos</h2>
+
+            <div class="project-card card">
+                <div class="project-header">
+                    <h3>Roadmap Financeiro: Do Zero ao DUX</h3>
+                    <span class="progress-text">33% Concluído</span>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-fill" style="width: 33%;"></div>
+                </div>
+
+                <ul class="project-steps">
+                    <li><input type="checkbox" checked> Fase 1: Estruturação e Planejamento</li>
+                    <li><input type="checkbox"> Fase 2: Acúmulo de Ativos</li>
+                    <li><input type="checkbox"> fase 3: Alocação Avançada</li>
+                </ul>
+            </div>
         </section>
     </main>
 

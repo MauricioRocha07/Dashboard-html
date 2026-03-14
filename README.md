@@ -2,25 +2,17 @@
 
 Um painel interativo e modular desenvolvido em Vanilla JavaScript para gerenciar rotinas diárias. O projeto foca em produtividade, oferecendo ferramentas essenciais em uma única tela, com uma arquitetura de código limpa e escalável.
 
-## 🚀 Funcionalidades Atuais
+## 🚀 Funcionalidades
 
-* **Relógio Digital:** Acompanhamento de tempo em tempo real.
-* **Gerenciador de Tarefas (To-Do):** Adição e conclusão de tarefas com persistência de dados no `localStorage`.
-* **Bloco de Notas:** Área de rascunho com salvamento automático no `localStorage`.
-* **Dark Mode:** Alternância entre tema claro e escuro para conforto visual.
-* **Arquitetura Modular:** Código JavaScript separado por responsabilidades usando ES6 Modules (`import/export`).
+* **🏠 Home (Visão Geral):** Widgets interativos com Relógio Digital e previsão do clima.
+* **🌤️ Clima Dinâmico:** Integração com a Open-Meteo API e Geolocalização do navegador.
+* **📈 Painel Financeiro:** Cotações do Dólar, Euro e Bitcoin em tempo real (AwesomeAPI).
+* **🎯 Projetos e Metas:** Acompanhamento de projetos com barra de progresso dinâmica baseada em conclusão de fases.
+* **✅ Gerenciador de Tarefas:** Adição e conclusão de tarefas com persistência (`localStorage`).
+* **📝 Bloco de Notas:** Área de rascunho com salvamento automático.
+* **🌙 Dark Mode:** Alternância entre tema claro e escuro.
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **HTML5:** Estrutura semântica e acessibilidade (A11y).
-* **CSS3:** Estilização responsiva, animações e variáveis de tema.
-* **JavaScript (Vanilla):** Lógica de negócios, manipulação de DOM e Web Storage API.
-
-## 🔜 Próximos Passos (Em Desenvolvimento)
-
-* Integração com a API do OpenWeatherMap (Geolocalização dinâmica).
-* Integração com APIs financeiras (Cotação de moedas/ações).
-
-## 👨‍💻 Autor
-
-Desenvolvido por **Maurício Rocha** - Estudante de Análise e Desenvolvimento de Sistemas.
+* **HTML5 & CSS3:** Flexbox, UI estilo "Cards" e responsividade.
+* **JavaScript (Vanilla):** ES6 Modules, manipulação de DOM, APIs Assíncronas (`fetch`, `async/await`) e Web Storage.

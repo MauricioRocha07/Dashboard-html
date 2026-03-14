@@ -2,11 +2,17 @@
 import { initClock } from "./clock.js";
 import { initTasks } from "./tasks.js";
 import { initNotes } from "./notes.js";
+import { initWeather } from "./weather.js";
+import { initProjects } from "./projects.js";
+import { initFinance } from "./finance.js";
 
 // Inicializando os módulos
 initClock();
 initTasks();
 initNotes();
+initWeather();
+initProjects();
+initFinance();
 
 // Navegação das abas
 const menuButtons = document.querySelectorAll('[data-section]');
