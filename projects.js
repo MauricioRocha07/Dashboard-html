@@ -1,39 +1,119 @@
 export function initProjects() {
-    // Pegamos todas as checkbox
-    const checkboxes = document.querySelectorAll('.project-steps input[type="checkbox"]');
-    const progressFill = document.querySelector('.progress-fill');
-    const progressText = document.querySelector('.progress-text');
+    // Selecionamos os elementos
+    const titleInput = document.getElementById("new-project-title");
+    const addBtn = document.getElementById("add-project-btn");
+    const activeContainer = document.getElementById("active-projects-container");
+    const trashContainer = document.getElementById("trash-projects-container");
+    const viewTrashBtn = document.getElementById("view-trash-btn");
 
-    if (!progressFill || !progressText) return; // Trava de segurança
+    if (!titleInput) return; // Trava de segurança
 
-    function updateProgress() {
-        const total = checkboxes.length;
-        // Contas quantas estão com o check
-        const checked = document.querySelectorAll('.project-steps input[type="checkbox"]:checked').length;
+    // O "Banco de Dados" local
+    let projectsData = JSON.parse(localStorage.getItem("dashboard_projects_v2")) || [];
 
-        // Se o total for 0, não divide
-        if (total === 0) return;
-
-        // Calcula a porcentagem
-        const percentage = Math.round((checked / total) * 100);
-
-        // Atualiza texto e largura da barra
-        progressText.textContent = `${percentage}% Concluído`;
-        progressFill.style.width = `${percentage}%`;
-
-        // Logica das cores
-        if (percentage === 100) {
-            progressFill.style.backgroundColor = "#4caf50";
-        } else if (percentage >= 50) {
-            progressFill.style.backgroundColor = "#ffc107";
-        } else {
-            progressFill.style.backgroundColor = "#ff4d4d";
-        }
+    //Função para salvar no navegador e atualizar tela
+    function saveAndRender() {
+        localStorage.setItem("dashboard_projects_v2", JSON.stringify(projectsData));
+        render();
     }
 
-    checkboxes.forEach(box => {
-        box.addEventListener('change', updateProgress);
+    // Função Render
+    function render() {
+        // Limpa os containers
+        activeContainer.innerHTML = "";
+        trashContainer.innerHTML = '<h3 style="color: #ff4d4d; margin-bottom: 15px;">Projetos Excluídos</h3>';
+
+        projectsData.forEach((project, index) => {
+            const card = document.createElement("div");
+            card.className = "project-card card";
+
+            if (!project.isTrashed) {
+                // Se o projeto está ativo (false)
+                card.innerHTML = `
+                <div class="project-header">
+                    <h3>${project.title}</h3>
+                    <button class="delete-project-btn" data-index="${index}" title="Mover para Lixeira">🗑️</button>
+                </div>
+                <p style="color: #666, font-size: 14px; margin-top: 10px;">(Adição dinâmica em breve...)</p>    
+                `;
+                activeContainer.appendChild(card);
+            } else {
+                // Se o projeto está na lixeira (true)
+                card.innerHTML = `
+                    <div class="project-header" style="opacity: 0.6;">
+                        <h3 style="text-decoration: line-through;">${project.title}</h3>
+                        <div style="display": flex; gap: 8px;>
+                            <button class="restore-btn dashboard-btn" data-index="${index}" >♻️ Restaurar</button>
+                            <button class="hard-delete-btn dashboard-btn" data-index="${index}">❌ Apagar</button>
+                        </div>
+                    </div>        
+                `;
+                trashContainer.appendChild(card);
+            }
+        });
+
+        // Conectando os botões de ação
+
+        // Botão de enviar para lixeira
+        document.querySelectorAll(".delete-project-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const idx = e.currentTarget.getAttribute("data-index");
+                projectsData[idx].isTrashed = true; // Aplica o Soft Delete
+                saveAndRender();
+            });
+        });
+
+        // Botão de restaurar
+        document.querySelectorAll(".restore-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                const idx = e.currentTarget.getAttribute("data-index");
+                projectsData[idx].isTrashed = false; // Desfaz o Soft Delete
+                saveAndRender();
+            });
+        });
+
+        // Botão apagar definidamente
+        document.querySelectorAll(".hard-delete-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                // Dispara o alerta no nacegador
+                const confirmation = confirm("⚠️ CUIDADO: Tem certeza que deseja apagr este projeto permanentemente? Essa ação não pode ser desfeita.");
+
+                // Usuario apertou em "OK"
+                if (confirmation) {
+                    const idx = e.currentTarget.getAttribute("data-index");
+                    projectsData.splice(idx, 1); // Remove do Array for ever
+                    saveAndRender();
+                }
+                
+            });
+        });
+    }
+
+    // Função para criar novo projeto
+    addBtn.addEventListener("click", () => {
+        const title = titleInput.value.trim();
+        if (title !== "") {
+            projectsData.push({
+                title: title,
+                isTrashed: false, // Nasce fora da lixeira
+                tasks: []
+            });
+            titleInput.value = ""; // Limpa o campo
+            saveAndRender();
+        }
     });
 
-    updateProgress();
+    // Botão Mostra/Esconde lixeira
+    viewTrashBtn.addEventListener("click", () => {
+        if (trashContainer.style.display === "none") {
+            trashContainer.style.display = "block";
+            viewTrashBtn.textContent = "🙈 Esconder Lixeira";
+        } else {
+            trashContainer.style.display = "none";
+            viewTrashBtn.textContent = "🗑️ Lixeira";
+        }
+    });
+
+    // Roda ao carregar a página
+    render();
 }

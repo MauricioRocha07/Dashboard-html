@@ -460,3 +460,92 @@ body.dark .currency-info strong {
 body.dark .currency-info span {
     color: #fff;
 }
+
+/* Controles de projeto e lixeira */
+.projects-header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-project-card {
+    border-top: 4px solid #4cad50;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+body.dark .input-group input {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+}
+
+/* Botão de excluir o projeto todo */
+.delete-project-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.5;
+    padding: 8px;
+    border-radius: 50%; /* Deixar o fundo redondo */ 
+    transition: all 0.3s ease; 
+}
+
+.delete-project-btn:hover {
+    opacity: 1;
+    transform: scale(1.2) rotate(-10deg); /* Animação de Balançar */
+    background-color: #ffcccc;
+}
+
+/* Ajuste do fundo vermelho para o modo escuro */
+body.dark .delete-project-btn:hover {
+    background-color: #4a1919;
+}
+
+/* Botão principal da lixeira */
+#view-trash-btn {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+#view-trash-btn:hover {
+    transform: translateY(-3px); /* Como se o botão saltasse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #555 !important;
+}
+
+.restore-btn, .hard-delete-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* Restaurar */
+.restore-btn {
+    background-color: #2e7d32;
+}
+.restore-btn:hover {
+    background-color: #4caf50;
+    transform: scale(1.05); /* Efeito de inchar o botão */
+}
+
+/* Apagar */
+.hard-delete-btn {
+    background-color: #b71c1c;
+}
+.hard-delete-btn:hover {
+    background-color: #ff4d4d;
+    transform: scale(1.05);
+}

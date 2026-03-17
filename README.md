@@ -7,7 +7,9 @@ Um painel interativo e modular desenvolvido em Vanilla JavaScript para gerenciar
 * **🏠 Home (Visão Geral):** Widgets interativos com Relógio Digital e previsão do clima.
 * **🌤️ Clima Dinâmico:** Integração com a Open-Meteo API e Geolocalização do navegador.
 * **📈 Painel Financeiro:** Cotações do Dólar, Euro e Bitcoin em tempo real (AwesomeAPI).
-* **🎯 Projetos e Metas:** Acompanhamento de projetos com barra de progresso dinâmica baseada em conclusão de fases.
+* **🎯 Gestão de Projetos (CRUD):** * Criação e acompanhamento de projetos com persistência de dados no `localStorage`.
+  * **Lixeira (Soft Delete):** Sistema seguro de exclusão lógica, permitindo a restauração de projetos apagados acidentalmente.
+  * **Hard Delete:** Exclusão definitiva com validação de segurança (alerta do navegador) para evitar perda de dados críticos.
 * **✅ Gerenciador de Tarefas:** Adição e conclusão de tarefas com persistência (`localStorage`).
 * **📝 Bloco de Notas:** Área de rascunho com salvamento automático.
 * **🌙 Dark Mode:** Alternância entre tema claro e escuro.

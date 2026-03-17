@@ -72,23 +72,23 @@
         </section>
 
         <section id="projects" class="dashboard-section">
-            <h2>Acompanhamento de Projetos</h2>
-
-            <div class="project-card card">
-                <div class="project-header">
-                    <h3>Roadmap Financeiro: Do Zero ao DUX</h3>
-                    <span class="progress-text">33% Concluído</span>
+            <div class="projects-header-controls">
+                <h2>Acompanhamento de Projetos</h2>
+                <button id="view-trash-btn" class="dashboard-btn" style="background-color: #666;">🗑️ Lixeira</button>
+            </div>
+            
+            <div class="card add-project-card">
+                <h3>Criar Novo Projeto</h3>
+                <div class="input-group">
+                    <input type="text" id="new-project-title" placeholder="Ex: Lançamento E-commerce Europa" />
+                    <button id="add-project-btn" class="dashboard-btn">➕ Iniciar Projeto</button>
                 </div>
+            </div>
 
-                <div class="progress-bar-container">
-                    <div class="progress-fill" style="width: 33%;"></div>
-                </div>
+            <div id="active-projects-container"></div>
 
-                <ul class="project-steps">
-                    <li><input type="checkbox" checked> Fase 1: Estruturação e Planejamento</li>
-                    <li><input type="checkbox"> Fase 2: Acúmulo de Ativos</li>
-                    <li><input type="checkbox"> fase 3: Alocação Avançada</li>
-                </ul>
+            <div id="trash-projects-container" style="display: none;">
+                <h3 style="color: #ff4d4d; margin-bottom: 15px;">Projetos Excluídos</h3>
             </div>
         </section>
     </main>
